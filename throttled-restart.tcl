@@ -32,7 +32,7 @@ logger::utils::applyAppender -appender console -service ${logger_svc}
 set options {
     {"c.arg"  ""  "command to start process"}
     {"k.arg"  ""  "command to kill process"}
-    {"d.arg"  5   "debounce seconds (0 = no-debouncing)"}
+    {"i.arg"  5   "throttling seconds (0 = no-throttling)"}
     {"v"          "(more) verbose output"}
 }
 set usage ": (USAGE) $argv0 \[options]\n\nOPTIONS:"
@@ -152,11 +152,11 @@ proc handle_input {ch} {
     chan gets $ch
 
     set cur [clock second]
-    if {$last_restart < ($cur - $params(d))} {
+    if {$last_restart < ($cur - $params(i))} {
         restart_proc $params(c) $params(k)
         set last_restart $cur
     } else {
-        set remain [expr {abs($cur - $params(d) - $last_restart)}]
+        set remain [expr {abs($cur - $params(i) - $last_restart)}]
         ${logger}::info "IGNORED: ${remain} seconds left ..."
     }
 }
