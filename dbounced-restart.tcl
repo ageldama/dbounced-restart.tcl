@@ -1,6 +1,8 @@
 #!/usr/bin/env tclsh
 
 #
+# Jonghyouk Yun <ageldama@gmail.com>, 2025.
+#
 # - 시작하면, c.arg 실행 => stdout/stderr print (background?).
 # - fswatch 등와 엮어서, stdin 입력이 있으면 k.arg 실행 => c.arg 실행.
 # - d.arg 이내에 발생한 stdin은 무시함.
