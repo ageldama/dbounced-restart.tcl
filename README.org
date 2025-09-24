@@ -78,5 +78,6 @@
 * REQUIREMENTS
 
   1. [[https://www.tcl-lang.org/][Tcl]] 8.6+
+  1. [[https://www.tcl-lang.org/man/tcl8.6/ThreadCmd/thread.htm][Tcl Thread]] 2.8.10+
   1. [[https://www.tcl-lang.org/software/tcllib/][Tcllib]] 2.0+
 
