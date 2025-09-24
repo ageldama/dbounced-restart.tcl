@@ -5,7 +5,7 @@
 1. Start a command as its subprocess.
 1. Kill its subprocess and Restart on STDIN.
    1. can specify "Kill command".
-   1. combined via pipe with tools like [[https://github.com/emcrisostomo/fswatch][~fswatch~]], [[https://github.com/inotify-tools/inotify-tools][~inotify-tools~]].
+   1. combined via pipe with tools like [[https://github.com/emcrisostomo/fswatch][fswatch]], [[https://github.com/inotify-tools/inotify-tools][inotify-tools]].
 1. Ignore consequent inputs ("debouncing")
 
 
