@@ -2,5 +2,40 @@
 #+AUTHOR: jonghyouk yun <ageldama@gmail.com>
 
 
-* ~dbounced-restart.tcl~
+1. Start a command as its subprocess.
+1. Kill its subprocess and Restart on STDIN.
+   1. can specify "Kill command".
+   1. combined via pipe with tools like ~fswatch~, ~inotify-tools~.
+1. Ignore consequent inputs ("debouncing")
 
+
+* SYNOPSIS
+  #+begin_src shell
+    $ ./dbounced-restart.tcl -c ./examples/echosrv.tcl
+    [2825/09/24 13:55:19] [./dbounced-restart.tcl] [start_proc] [info] STARTING: ./examples/echosrv.tcl ...
+    [2825/09/24 13:55:20] [./dbounced-restart.tcl::tid0x245d1e43808] [run_cmd] [info] STARTED-PID: 6215
+    Listen on 127.0.0.1:1818 ...
+
+    [2825/09/24 13:55:22] [./dbounced-restart.tcl] [handle_input] [info] --- GOT NEW INPUT ---
+    [2825/09/24 13:55:22] [./dbounced-restart.tcl] [handle_input] [info] IGNORED: 2 seconds left ...
+
+    [2825/09/24 13:55:23] [./dbounced-restart.tcl] [handle_input] [info] --- GOT NEW INPUT ---
+    [2825/09/24 13:55:23] [./dbounced-restart.tcl] [handle_input] [info] IGNORED: 1 seconds left ...
+
+    [2825/09/24 13:55:24] [./dbounced-restart.tcl] [handle_input] [info] --- GOT NEW INPUT ---
+    [2825/09/24 13:55:24] [./dbounced-restart.tcl] [handle_input] [info] IGNORED: 0 seconds left ...
+
+    [2825/09/24 13:55:25] [./dbounced-restart.tcl] [handle_input] [info] --- GOT NEW INPUT ---
+    [2825/09/24 13:55:25] [./dbounced-restart.tcl] [restart_proc] [warn] --- NO KILL-COMMAND SPECIFIED ---
+    [2825/09/24 13:55:25] [./dbounced-restart.tcl::tid0x245d1e43808] [kill_proc] [info] KILL-PID: 6215
+    [2825/09/24 13:55:25] [./dbounced-restart.tcl] [start_proc] [info] STARTING: ./examples/echosrv.tcl ...
+    [2825/09/24 13:55:25] [./dbounced-restart.tcl::tid0x245d1e4a808] [run_cmd] [info] STARTED-PID: 6217
+    Listen on 127.0.0.1:1818 ...
+    ^C
+  #+end_src
+
+* OPTIONS
+
+
+* REQUIREMENTS
+  
